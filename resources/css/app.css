@@ -1,0 +1,5 @@
+@import './bootstrap';
+@import './fonts/*';
+@import './components/*';
+
+@tailwind utilities;
