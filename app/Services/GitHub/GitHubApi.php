@@ -15,7 +15,7 @@ class GitHubApi
 
     public function fetchPublicRepositories(string $userName): Collection
     {
-        $repos = $this->fetchAllResults('organization', 'repositories', [$userName]);
+        $repos = $this->fetchAllResults('user', 'repositories', [$userName]);
 
         return collect($repos)->filter(function ($repo) {
             return $repo['private'] === false;
