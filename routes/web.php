@@ -15,3 +15,7 @@ Route::group(['middleware' => AccessToken::class], function () {
 });
 
 Route::ohDearWebhooks('/oh-dear-webhooks');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
