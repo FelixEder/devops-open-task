@@ -9,3 +9,8 @@ Start the VM:
 Open another terminal and start vagrant ssh, cd into folder
 At each change of vue components:
 - run 'yarn run production'
+
+To trigger an Websocket event:
+- run 'art list'
+- run 'dashboard:fetch-github-main-repo-stats' or similar
+This will show in the websocket serve terminal window
