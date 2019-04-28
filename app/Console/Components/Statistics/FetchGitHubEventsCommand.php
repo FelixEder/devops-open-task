@@ -2,11 +2,9 @@
 
 namespace App\Console\Components\Statistics;
 
-use App\Events\Statistics\GitHubTotalsEvents;
 use Illuminate\Console\Command;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Support\Collection;
-use App\Events\Statistics\GitHubTotalsFetched;
 
 class FetchGitHubEventsCommand extends Command
 {
@@ -31,7 +29,7 @@ class FetchGitHubEventsCommand extends Command
 
 
 
-        event(new GitHubTotalsEvents($totals));
+        event(new GitHubCodeDayRepo($totals));
 
         $this->info('All done right!');
     }

@@ -13,6 +13,11 @@ class GitHubApi
         $this->client = $client;
     }
 
+    public function fetchMainRepoStats(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('repo', 'show', [$userName, $repoName]));
+    }
+
     public function fetchPublicRepositories(string $userName): Collection
     {
         $repos = $this->fetchAllResults('user', 'repositories', [$userName]);

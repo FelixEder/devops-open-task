@@ -8,10 +8,6 @@
             <div class="uppercase">
                 <div class="grid gap-4 items-center" style="grid-template-columns: repeat(3, auto);">
                     <span> {{ weather.temperature }}° <span class="text-sm uppercase text-dimmed">out</span> </span>
-                    <span>
-                        <office-temperature />
-                        <span class="text-sm uppercase text-dimmed">in</span>
-                    </span>
                     <span v-for="icon in weather.icons" class="text-2xl" v-html="icon"></span>
                 </div>
                 <div class="hidden">{{ weatherCity }}</div>
