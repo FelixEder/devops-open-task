@@ -1,0 +1,11 @@
+Start the VM:
+- go to Homestead
+- vagrant up
+- vagrant ssh 
+- cd in to the folder
+- run 'art schedule:run'
+- run 'art websocket:serve'
+
+Open another terminal and start vagrant ssh, cd into folder
+At each change of vue components:
+- run 'yarn run production'
