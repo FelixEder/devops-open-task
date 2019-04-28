@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(FetchBuienradarForecastsCommand::class)->everyFiveMinutes();
         $schedule->command(FetchTasksCommand::class)->everyFiveMinutes();
         $schedule->command(FetchStatusCommand::class)->everyFiveMinutes();
-        $schedule->command(FetchGitHubTotalsCommand::class)->everyThirtyMinutes();
+        $schedule->command(FetchGitHubTotalsCommand::class)->everyMinute();
         $schedule->command(FetchPackagistTotalsCommand::class)->hourly();
         $schedule->command('websockets:clean')->daily();
     }

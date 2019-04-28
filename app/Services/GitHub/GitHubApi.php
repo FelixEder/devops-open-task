@@ -32,6 +32,11 @@ class GitHubApi
         return collect($this->fetchAllResults('pull_request', 'all', [$userName, $repoName]));
     }
 
+    public function fetchEvents(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('repo', 'events', [$userName, $repoName]));
+    }
+
     protected function fetchAllResults(string $interfaceName, string $method, array $parameters)
     {
         return (new ResultPager($this->client))->fetchAll(

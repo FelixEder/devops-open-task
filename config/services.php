@@ -16,6 +16,7 @@ return [
         'token' => env('GITHUB_TOKEN'),
         'hook_secret' => env('GITHUB_HOOK_SECRET'),
         'username' => env('GITHUB_USERNAME'),
+        'repo' => env('GITHUB_REPO'),
     ],
 
     'last-fm' => [
