@@ -39,8 +39,7 @@ new Vue({
             wsHost: window.location.hostname,
             wsPath: window.dashboard.clientConnectionPath,
             wsPort: window.dashboard.wsPort,
-            disableStats: true,
-            encrypted: false
+            //disableStats: true
         };
 
         if (window.dashboard.environment === 'local') {
