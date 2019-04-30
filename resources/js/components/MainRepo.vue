@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { emoji, formatNumber } from '../helpers';
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
@@ -37,29 +38,32 @@ export default {
 
     data() {
         return {
-                githubStars: 0,
-                githubIssues: 0,
-                githubForks: 0,
-                githubCommits: 0
+            githubStars: 0,
+            githubIssues: 0,
+            githubForks: 0,
+            githubCommits: 0
         };
     },
 
     methods: {
+        emoji,
+        formatNumber,
 
         getEventHandlers() {
             return {
-                'MainRepository.GitHubCodeDayRepo': response => {
+                'Repository.GitHubRepoFetched': response => {
+                    console.log(response);
                     this.githubStars = response.stars;
                     this.githubIssues = response.issues;
                     this.githubForks = response.forks;
                     this.githubCommits = response.commits;
-                },
+                }
             };
         },
 
         getSaveStateConfig() {
             return {
-                cacheKey: 'events',
+                cacheKey: 'main-repo'
             };
         },
     },

@@ -13,6 +13,16 @@ class GitHubApi
         $this->client = $client;
     }
 
+    public function fetchRepo(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('repo', 'show', [$userName, $repoName]));
+    }
+
+    public function fetchRepoCommits(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('repos', 'commits', [$userName, $repoName]));
+    }
+
     public function fetchMainRepoStats(string $userName, string $repoName): Collection
     {
         return collect($this->fetchAllResults('repo', 'show', [$userName, $repoName]));
@@ -40,6 +50,15 @@ class GitHubApi
     public function fetchEvents(string $userName, string $repoName): Collection
     {
         return collect($this->fetchAllResults('repo', 'events', [$userName, $repoName]));
+    }
+
+    protected function fetchAllCommitResults(string $interfaceName, string $method, array $parameters)
+    {
+        return (new ResultPager($this->client))->fetchAll(
+            $this->client->api($interfaceName)->commits(),
+            $method,
+            $parameters
+        );
     }
 
     protected function fetchAllResults(string $interfaceName, string $method, array $parameters)

@@ -7,13 +7,9 @@ import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
 import Statistics from './components/Statistics';
 import InternetConnection from './components/InternetConnection';
-import TeamMember from './components/TeamMember';
 import TimeWeather from './components/TimeWeather';
-import Trains from './components/Trains';
-import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
-import Velo from './components/Velo';
-import Events from './components/Events';
+import MainRepo from './components/MainRepo';
 import TileTimer from './components/TileTimer';
 
 new Vue({
@@ -24,14 +20,10 @@ new Vue({
         Calendar,
         Statistics,
         InternetConnection,
-        TeamMember,
         TimeWeather,
-        Trains,
-        Twitter,
         Uptime,
-        Velo,
         TileTimer,
-        Events,
+        MainRepo
     },
 
     created() {
@@ -40,8 +32,7 @@ new Vue({
             key: window.dashboard.pusherKey,
             wsHost: window.location.hostname,
             wsPath: window.dashboard.clientConnectionPath,
-            wsPort: window.dashboard.wsPort,
-            //disableStats: true
+            wsPort: window.dashboard.wsPort
         };
 
         if (window.dashboard.environment === 'local') {

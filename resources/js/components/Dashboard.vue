@@ -31,7 +31,7 @@ export default {
 
         getSaveStateConfig() {
             return {
-                cacheKey: `dashboard`,
+                cacheKey: 'dashboard'
             };
         },
     },
