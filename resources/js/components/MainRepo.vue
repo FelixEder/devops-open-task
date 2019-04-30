@@ -18,6 +18,9 @@
                 <li>
                     <span>Commits</span> <span class="font-bold variant-tabular">{{ formatNumber(githubCommits) }}</span>
                 </li>
+
+                <li>
+                    <span>Pull requests</span> <span class="font-bold variant-tabular">{{ formatNumber(pullRequests) }}</span>
             </ul>
         </div>
     </tile>
@@ -45,6 +48,7 @@ export default {
             githubForks: 0,
             githubCommits: 0,
             mainRepoName: "..."
+            pullRequests: 0
         };
     },
 
@@ -60,6 +64,7 @@ export default {
                     this.githubIssues = response.issues;
                     this.githubForks = response.forks;
                     this.githubCommits = response.commits;
+                    this.pullRequests = response.pull_requests;
                 }
             };
         },

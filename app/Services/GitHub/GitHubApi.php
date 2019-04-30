@@ -34,4 +34,11 @@ class GitHubApi
             ->fetchAll($this->client
                 ->api('repos')->forks(), 'all', [$userName, $repoName, []]));
     }
+
+    public function fetchRepoPullRequests(string $userName, string $repoName): Collection
+    {
+        return  collect($this->resultPager
+                ->fetchAll($this->client
+                ->api('pull_request'), 'all', [$userName, $repoName]));
+    }
 }
