@@ -32,6 +32,8 @@ class FetchGitHubRepo extends Command
                     'open_issues_count'
                 ]);
 
+                //$this->info($filtered);
+
                 $commitsCount = $gitHub
                     ->fetchRepoCommits($userName, $repoName)
                     ->count();
