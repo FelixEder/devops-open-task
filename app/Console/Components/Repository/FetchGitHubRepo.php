@@ -35,8 +35,6 @@ class FetchGitHubRepo extends Command
                 ];
             });
 
-        $this->info(implode(" ", $repo));
-
         event(new GitHubRepoFetched($repo));
 
         $this->info('Repo loaded!');
