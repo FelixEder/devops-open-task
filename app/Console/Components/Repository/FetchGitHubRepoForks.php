@@ -31,7 +31,8 @@ class FetchGitHubRepoForks extends Command
                         'commits' => $gitHub->fetchRepoCommits(
                             $fork['owner']['login'],
                             $fork['name']
-                        )->count()
+                        )->count(),
+                        'stars' => $fork['stargazers_count']
                     ];
                 }));
 

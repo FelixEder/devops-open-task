@@ -1,20 +1,14 @@
 <template>
     <tile :position="position">
         <div class="grid gap-padding h-full markup">
+            <span>{{ name }}</span>
             <ul class="align-self-center">
                 <li>
                     <span v-html="emoji('✨')" />
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubStars) }}</span>
+                    <span class="font-bold variant-tabular">{{ formatNumber(stars) }}</span>
                 </li>
                 <li>
-                    <span>Forks</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubForks) }}</span>
-                </li>
-                <li>
-                    <span>Issues</span> <span class="font-bold variant-tabular">{{ formatNumber(githubIssues) }}</span>
-                </li>
-                <li>
-                    <span>Commits</span> <span class="font-bold variant-tabular">{{ formatNumber(githubCommits) }}</span>
+                    <span>Commits</span> <span class="font-bold variant-tabular">{{ formatNumber(commits) }}</span>
                 </li>
             </ul>
         </div>
@@ -23,7 +17,6 @@
 
 <script>
 import { emoji, formatNumber } from '../helpers';
-import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import saveState from 'vue-save-state';
 
@@ -32,33 +25,13 @@ export default {
         Tile,
     },
 
-    mixins: [echo, saveState],
+    mixins: [saveState],
 
-    props: ['position'],
-
-    data() {
-        return {
-            githubStars: 0,
-            githubIssues: 0,
-            githubForks: 0,
-            githubCommits: 0
-        };
-    },
+    props: ['position', 'commits', 'stars', 'name'],
 
     methods: {
         emoji,
         formatNumber,
-
-        getEventHandlers() {
-            return {
-                'Repository.GitHubRepoFetched': response => {
-                    this.githubStars = response.stars;
-                    this.githubIssues = response.issues;
-                    this.githubForks = response.forks;
-                    this.githubCommits = response.commits;
-                }
-            };
-        },
 
         getSaveStateConfig() {
             return {

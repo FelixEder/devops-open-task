@@ -44,7 +44,7 @@ export default {
             githubIssues: 0,
             githubForks: 0,
             githubCommits: 0,
-            mainRepoName: "NoName"
+            mainRepoName: "..."
         };
     },
 
