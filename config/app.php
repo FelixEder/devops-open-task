@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'Europe/Brussels',
+    'timezone' => 'Europe/Stockholm',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,13 +173,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\CollectionServiceProvider::class,
-        Spatie\LaravelTwitterStreamingApi\TwitterStreamingApiServiceProvider::class,
         App\Services\GitHub\GitHubServiceProvider::class,
-        App\Services\Slack\SlackServiceProvider::class,
-        App\Services\Velo\VeloServiceProvider::class,
-        App\Services\Trains\IRailServiceProvider::class,
-        App\Services\Buienradar\BuienradarServiceProvider::class,
-        App\Services\Forecast\ForecastServiceProvider::class,
     ],
 
     /*

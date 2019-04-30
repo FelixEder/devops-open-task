@@ -20,13 +20,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command(FetchGitHubRepo::class)->everyMinute();
         $schedule->command(FetchCalendarEventsCommand::class)->everyMinute();
-        $schedule->command(FetchCurrentTracksCommand::class)->everyMinute();
         $schedule->command(SendHeartbeatCommand::class)->everyMinute();
         $schedule->command(DetermineAppearanceCommand::class)->everyMinute();
-        $schedule->command(FetchTasksCommand::class)->everyFiveMinutes();
-        $schedule->command(FetchStatusCommand::class)->everyFiveMinutes();
         $schedule->command(FetchGitHubTotalsCommand::class)->everyMinute();
-        $schedule->command(FetchPackagistTotalsCommand::class)->hourly();
         $schedule->command('websockets:clean')->daily();
     }
 

@@ -11,15 +11,9 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-        \App\Events\Twitter\Mentioned::class => [
-            \App\Services\TweetHistory\TweetHistory::class,
-        ],
-    ];
+    protected $listen = [];
 
-    protected $subscribe = [
-        \App\Services\OhDearWebhooks\EventSubscriber::class,
-    ];
+    protected $subscribe = [];
 
     /**
      * Register any events for your application.
