@@ -52,7 +52,6 @@ export default {
         getEventHandlers() {
             return {
                 'Repository.GitHubRepoFetched': response => {
-                    console.log(response);
                     this.githubStars = response.stars;
                     this.githubIssues = response.issues;
                     this.githubForks = response.forks;

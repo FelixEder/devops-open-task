@@ -25,22 +25,15 @@ class FetchGitHubRepo extends Command
             ->pipe(function (Collection $repo) use (
                 $gitHub, $userName, $repoName
             ) {
-                $filtered = $repo->only([
-                    'forks_count',
-                    'stargazers_count',
-                    'open_issues_count'
-                ]);
-
-                $commitsCount = $gitHub
-                    ->fetchRepoCommits($userName, $repoName)
-                    ->count();
-
-                $combined = $filtered->put('commits_count', $commitsCount);
-
-                return $combined;
+                return [
+                    'stars'   => $repo->get('stargazers_count'),
+                    'issues'  => $repo->get('open_issues_count'),
+                    'forks'   => $repo->get('forks_count'),
+                    'commits' => $gitHub->fetchRepoCommits($userName, $repoName)->count()
+                ];
             });
 
-        event(new GitHubRepoFetched($repo->toArray()));
+        event(new GitHubRepoFetched($repo));
 
         $this->info('Repo loaded!');
     }
