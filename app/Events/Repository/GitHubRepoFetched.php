@@ -21,6 +21,9 @@ class GitHubRepoFetched extends DashboardEvent
     /** @var int */
     public $stars;
 
+    /** @var int */
+    public $pull_requests;
+
     public function __construct(array $repo)
     {
         $this->full_name = $repo['full_name'];
@@ -28,5 +31,6 @@ class GitHubRepoFetched extends DashboardEvent
         $this->forks = $repo['forks'];
         $this->issues = $repo['issues'];
         $this->commits = $repo['commits'];
+        $this->pull_requests = $repo['pull_requests'];
     }
 }
