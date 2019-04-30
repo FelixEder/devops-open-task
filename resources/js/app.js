@@ -8,7 +8,6 @@ import Calendar from './components/Calendar';
 import InternetConnection from './components/InternetConnection';
 import TimeWeather from './components/TimeWeather';
 import MainRepo from './components/MainRepo';
-import ForkRepos from './components/ForkRepos';
 import TileTimer from './components/TileTimer';
 
 new Vue({
@@ -20,7 +19,6 @@ new Vue({
         InternetConnection,
         TimeWeather,
         TileTimer,
-        ForkRepos,
         MainRepo
     },
 

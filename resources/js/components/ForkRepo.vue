@@ -27,7 +27,15 @@ export default {
 
     mixins: [saveState],
 
-    props: ['position', 'commits', 'stars', 'name'],
+    props: ['commits', 'stars', 'name', 'index'],
+
+    computed: {
+        position: function () {
+            let column = String.fromCharCode(98 + (this.index % 4));
+            let row = (this.index/4);
+            return `${column}${1+row*12}:${column}${12+row*12}`;
+        }
+    },
 
     methods: {
         emoji,

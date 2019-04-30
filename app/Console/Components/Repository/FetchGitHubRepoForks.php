@@ -38,7 +38,7 @@ class FetchGitHubRepoForks extends Command
 
                 return $converted
                     ->sortByDesc('commits')
-                    ->slice(0, 4);
+                    ->slice(0, 8);
             });
 
         event(new GitHubRepoForksFetched($forks->toArray()));

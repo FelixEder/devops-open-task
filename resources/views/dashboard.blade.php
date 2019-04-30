@@ -7,7 +7,6 @@
     <dashboard class="font-sans">
         <main-repo position="a7:a24"></main-repo>
         <time-weather position="a1:a6" date-format="ddd DD/MM" time-zone="Europe/Stockholm" weather-city="Stockholm"></time-weather>
-        <fork-repos position="b1:e24"></fork-repos>
         <internet-connection position="e1:e6"></internet-connection>
     </dashboard>
 </div>
