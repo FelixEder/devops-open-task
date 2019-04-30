@@ -8,8 +8,7 @@ Felix Eder (felixed@kth.se)
 ##### About
 This project has set up a dashboard that can be used to monitor the activity of a github repository, including forks, pull requests and so on. The main idé was to set up something for the hackathon mentioned in this [issue](https://github.com/KTH/devops-course/issues/118).
 
-
-
+The dashboard is right now configured for this very repo, but see below for how to change this. See the building section below to see of to build this project.
 
 ##### Building
 After cloning the repo, you need to install Laravel Homestead, which is done by following this [guide](https://laravel.com/docs/5.8/homestead).
