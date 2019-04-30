@@ -36,11 +36,9 @@ import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import moment from 'moment-timezone';
 import weather from '../services/weather/Weather';
-import OfficeTemperature from './atoms/OfficeTemperature';
 
 export default {
     components: {
-        OfficeTemperature,
         Tile,
     },
 

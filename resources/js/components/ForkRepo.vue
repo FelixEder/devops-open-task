@@ -7,22 +7,14 @@
                     <span class="font-bold variant-tabular">{{ formatNumber(githubStars) }}</span>
                 </li>
                 <li>
-                    <span>Contributors</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubContributors) }}</span>
+                    <span>Forks</span>
+                    <span class="font-bold variant-tabular">{{ formatNumber(githubForks) }}</span>
                 </li>
                 <li>
                     <span>Issues</span> <span class="font-bold variant-tabular">{{ formatNumber(githubIssues) }}</span>
                 </li>
                 <li>
-                    <span>Pull Requests</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubPullRequests) }}</span>
-                </li>
-                <li>
-                    <span>30 days</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(packagistMonthly) }}</span>
-                </li>
-                <li>
-                    <span>Total</span> <span class="font-bold variant-tabular">{{ formatNumber(packagistTotal) }}</span>
+                    <span>Commits</span> <span class="font-bold variant-tabular">{{ formatNumber(githubCommits) }}</span>
                 </li>
             </ul>
         </div>
@@ -48,11 +40,8 @@ export default {
         return {
             githubStars: 0,
             githubIssues: 0,
-            githubPullRequests: 0,
-            githubContributors: 0,
-
-            packagistTotal: 0,
-            packagistMonthly: 0,
+            githubForks: 0,
+            githubCommits: 0
         };
     },
 
@@ -62,23 +51,18 @@ export default {
 
         getEventHandlers() {
             return {
-                'Statistics.GitHubTotalsFetched': response => {
+                'Repository.GitHubRepoFetched': response => {
                     this.githubStars = response.stars;
                     this.githubIssues = response.issues;
-                    this.githubPullRequests = response.pullRequests;
-                    this.githubContributors = response.contributors;
-                },
-
-                'Statistics.PackagistTotalsFetched': response => {
-                    this.packagistTotal = response.total;
-                    this.packagistMonthly = response.monthly;
-                },
+                    this.githubForks = response.forks;
+                    this.githubCommits = response.commits;
+                }
             };
         },
 
         getSaveStateConfig() {
             return {
-                cacheKey: 'statistics',
+                cacheKey: 'fork-repo'
             };
         },
     },

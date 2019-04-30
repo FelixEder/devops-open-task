@@ -2,6 +2,7 @@
 
 namespace App\Console\Components\Repository;
 
+use App\Events\Repository\GitHubRepoForksFetched;
 use Illuminate\Console\Command;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Support\Collection;
@@ -20,33 +21,28 @@ class FetchGitHubRepoForks extends Command
         $userName = config('services.github.username');
         $repoName = config('services.github.repo');
 
-        $repo = $gitHub
+        $forks = $gitHub
             ->fetchRepoForks($userName, $repoName)
-            ->pipe(function (Collection $repos) use (
+            ->pipe(function (Collection $forks) use (
                 $gitHub, $userName, $repoName
             ) {
-                return $repos->map(function ($repo) {
+                $converted = collect($forks->map(function (array $fork) use ($gitHub) {
                     return [
-                        ''
+                        'name' => $fork['full_name'],
+                        'commits' => $gitHub->fetchRepoCommits(
+                            $fork['owner']['login'],
+                            $fork['name']
+                        )->count()
                     ];
-                });
-                $filtered = $repo->only([
-                    'forks_count',
-                    'stargazers_count',
-                    'open_issues_count'
-                ]);
+                }));
 
-                $commitsCount = $gitHub
-                    ->fetchRepoCommits($userName, $repoName)
-                    ->count();
-
-                $combined = $filtered->put('commits_count', $commitsCount);
-
-                return $combined;
+                return $converted
+                    ->sortByDesc('commits')
+                    ->slice(0, 4);
             });
 
-        event(new GitHubRepoFetched($repo->toArray()));
+        event(new GitHubRepoForksFetched($forks->toArray()));
 
-        $this->info('Repo loaded!');
+        $this->info('Repo forks loaded!');
     }
 }

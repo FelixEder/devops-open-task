@@ -23,10 +23,9 @@ class GitHubRepoFetched extends DashboardEvent
 
     public function __construct(array $repo)
     {
-        $this->full_name = $repo['full_name'];
-        $this->stars = $repo['stargazers_count'];
-        $this->forks = $repo['forks_count'];
-        $this->issues = $repo['open_issues_count'];
-        $this->commits = $repo['commits_count'];
+        $this->stars = $repo['stars'];
+        $this->forks = $repo['forks'];
+        $this->issues = $repo['issues'];
+        $this->commits = $repo['commits'];
     }
 }
