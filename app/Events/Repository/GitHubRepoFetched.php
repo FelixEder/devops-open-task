@@ -6,6 +6,9 @@ use App\Events\DashboardEvent;
 
 class GitHubRepoFetched extends DashboardEvent
 {
+    /** @var string */
+    public $full_name;
+
     /** @var int */
     public $forks;
 
