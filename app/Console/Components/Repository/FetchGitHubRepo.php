@@ -30,6 +30,7 @@ class FetchGitHubRepo extends Command
                     'stars'   => $repo->get('stargazers_count'),
                     'issues'  => $repo->get('open_issues_count'),
                     'forks'   => $repo->get('forks_count'),
+                    'name'   => $repo->get('full_name'),
                     'commits' => $gitHub->fetchRepoCommits($userName, $repoName)->count()
                 ];
             });

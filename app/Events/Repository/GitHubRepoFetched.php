@@ -27,5 +27,6 @@ class GitHubRepoFetched extends DashboardEvent
         $this->forks = $repo['forks'];
         $this->issues = $repo['issues'];
         $this->commits = $repo['commits'];
+        $this->full_name = $repo['full_name'];
     }
 }

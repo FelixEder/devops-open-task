@@ -6,7 +6,6 @@ use App\Events\Repository\GitHubRepoForksFetched;
 use Illuminate\Console\Command;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Support\Collection;
-use App\Events\Repository\GitHubRepoFetched;
 
 class FetchGitHubRepoForks extends Command
 {
