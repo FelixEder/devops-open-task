@@ -1,6 +1,7 @@
 <template>
     <tile :position="position">
         <div class="grid gap-padding h-full markup">
+            <span class="main_repo_name">{{mainRepoName}}</span>
             <ul class="align-self-center">
                 <li>
                     <span v-html="emoji('✨')" />
@@ -13,6 +14,7 @@
                 <li>
                     <span>Issues</span> <span class="font-bold variant-tabular">{{ formatNumber(githubIssues) }}</span>
                 </li>
+                
                 <li>
                     <span>Commits</span> <span class="font-bold variant-tabular">{{ formatNumber(githubCommits) }}</span>
                 </li>
@@ -52,7 +54,9 @@ export default {
         getEventHandlers() {
             return {
                 'Repository.GitHubRepoFetched': response => {
+                    console.log("Hello");
                     console.log(response);
+                    this.mainRepoName = response.name;
                     this.githubStars = response.stars;
                     this.githubIssues = response.issues;
                     this.githubForks = response.forks;

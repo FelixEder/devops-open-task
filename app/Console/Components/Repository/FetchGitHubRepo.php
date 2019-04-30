@@ -26,6 +26,7 @@ class FetchGitHubRepo extends Command
                 $gitHub, $userName, $repoName
             ) {
                 $filtered = $repo->only([
+                    'full_name',
                     'forks_count',
                     'stargazers_count',
                     'open_issues_count'

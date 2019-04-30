@@ -6,6 +6,9 @@ use App\Events\DashboardEvent;
 
 class GitHubRepoFetched extends DashboardEvent
 {
+    /** @var string */
+    public $full_name;
+
     /** @var int */
     public $forks;
 
@@ -20,6 +23,7 @@ class GitHubRepoFetched extends DashboardEvent
 
     public function __construct(array $repo)
     {
+        $this->full_name = $repo['full_name'];
         $this->stars = $repo['stargazers_count'];
         $this->forks = $repo['forks_count'];
         $this->issues = $repo['open_issues_count'];
